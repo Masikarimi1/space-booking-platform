@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dubai to the Stars - Space Travel Booking Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Main homepage -->
+    <div id="home-page">
+        <div class="container">
+            <header>
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                    <span>DubaiSpace</span>
+                </div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active" onclick="showPage('home-page')">Home</a></li>
+                        <li><a href="#" onclick="showPage('destinations-section')">Destinations</a></li>
+                        <li><a href="#" onclick="showPage('packages-section')">Packages</a></li>
+                        <li><a href="#" onclick="showPage('accommodation-section')">Accommodation</a></li>
+                        <li><a href="#" onclick="showPage('about-section')">About</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="user-actions">
+                    <button class="outline-btn" onclick="showModal('login-modal')">Login</button>
+                    <button class="primary-btn" onclick="showPage('dashboard-page')">Dashboard</button>
+                </div>
+            </header>
+            
+            <section class="hero">
+                <h1>Dubai to the Stars</h1>
+                <p>Embark on an extraordinary journey to the cosmos. Experience the thrill of space travel with unparalleled luxury and safety.</p>
+                
+                <div class="search-box">
+                    <div class="tabs">
+                        <div class="tab active" onclick="changeTab(this, 'flights-tab')">Space Flights</div>
+                        <div class="tab" onclick="changeTab(this, 'hotels-tab')">Space Hotels</div>
+                        <div class="tab" onclick="changeTab(this, 'experiences-tab')">Experiences</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="flights-tab">
+                        <form class="search-form">
+                            <div class="form-group">
+                                <label>Departing From</label>
+                                <select>
+                                    <option>Dubai Spaceport</option>
+                                    <option>Abu Dhabi Lunar Gateway</option>
+                                    <option>Sharjah Orbital Terminal</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Destination</label>
+                                <select>
+                                    <option>Orbital Hotel Alpha</option>
+                                    <option>Lunar Colony Artemis</option>
+                                    <option>Mars Base One</option>
+                                    <option>Europa Research Station</option>
+                                    <option>Saturn Rings Observatory</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Departure Date</label>
+                                <input type="date" min="2025-03-23">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Return Date</label>
+                                <input type="date" min="2025-03-23">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Travelers</label>
+                                <select>
+                                    <option>1 Traveler</option>
+                                    <option>2 Travelers</option>
+                                    <option>3 Travelers</option>
+                                    <option>4 Travelers</option>
+                                    <option>5+ Travelers</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Class</label>
+                                <select>
+                                    <option>Economy Pod</option>
+                                    <option>Business Suite</option>
+                                    <option>First Class Cabin</option>
+                                    <option>VIP Zero-G Experience</option>
+                                </select>
+                            </div>
+                            
+                            <button type="button" class="search-btn" onclick="searchFlights()">
+                                Search Flights <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="tab-content" id="hotels-tab">
+                        <form class="search-form">
+                            <div class="form-group">
+                                <label>Destination</label>
+                                <select>
+                                    <option>Orbital Hotel Alpha</option>
+                                    <option>Lunar Colony Artemis</option>
+                                    <option>Mars Base One</option>
+                                    <option>Europa Research Station</option>
+                                    <option>Saturn Rings Observatory</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Check-in Date</label>
+                                <input type="date" min="2025-03-23">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Check-out Date</label>
+                                <input type="date" min="2025-03-23">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Guests</label>
+                                <select>
+                                    <option>1 Guest</option>
+                                    <option>2 Guests</option>
+                                    <option>3 Guests</option>
+                                    <option>4 Guests</option>
+                                    <option>5+ Guests</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Room Type</label>
+                                <select>
+                                    <option>Standard Gravity Pod</option>
+                                    <option>Deluxe Earth-View Suite</option>
+                                    <option>Zero-Gravity Luxury Chamber</option>
+                                    <option>Panoramic Observatory Suite</option>
+                                </select>
+                            </div>
+                            
+                            <button type="button" class="search-btn" onclick="searchHotels()">
+                                Search Accommodations <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="tab-content" id="experiences-tab">
+                        <form class="search-form">
+                            <div class="form-group">
+                                <label>Experience Type</label>
+                                <select>
+                                    <option>Spacewalk Adventure</option>
+                                    <option>Zero-G Dance Party</option>
+                                    <option>Astronomical Observatory Tour</option>
+                                    <option>Lunar Surface Expedition</option>
+                                    <option>Mars Rover Driving</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Location</label>
+                                <select>
+                                    <option>Orbital Hotel Alpha</option>
+                                    <option>Lunar Colony Artemis</option>
+                                    <option>Mars Base One</option>
+                                    <option>Europa Research Station</option>
+                                    <option>Saturn Rings Observatory</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" min="2025-03-23">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Participants</label>
+                                <select>
+                                    <option>1 Person</option>
+                                    <option>2 People</option>
+                                    <option>3 People</option>
+                                    <option>4 People</option>
+                                    <option>5+ People</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Duration</label>
+                                <select>
+                                    <option>2 Hours</option>
+                                    <option>Half Day (4 Hours)</option>
+                                    <option>Full Day (8 Hours)</option>
+                                    <option>Multi-Day Experience</option>
+                                </select>
+                            </div>
+                            
+                            <button type="button" class="search-btn" onclick="searchExperiences()">
+                                Search Experiences <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="destinations" id="destinations-section">
+                <div class="section-title">
+                    <h2>Popular Destinations</h2>
+                    <p>Explore the most breathtaking locations across our solar system. From luxurious orbital hotels to cutting-edge research stations on distant moons.</p>
+                </div>
+                
+                <div class="cards-container">
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('img/orbital-hotel.jpg')"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">Orbital Hotel Alpha</h3>
+                            <p class="card-text">Experience luxury in Earth's orbit with panoramic views of our home planet. Zero-gravity suites and gourmet dining await.</p>
+                            <div class="card-meta">
+                                <div class="price">$24,999</div>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                            <button class="primary-btn" style="width: 100%; margin-top: 15px;" onclick="bookNow('Orbital Hotel Alpha')">Book Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('img/lunar-colony.jpg')"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">Lunar Colony Artemis</h3>
+                            <p class="card-text">Walk on the surface of the Moon and experience 1/6th gravity. Explore the first permanent human settlement beyond Earth.</p>
+                            <div class="card-meta">
+                                <div class="price">$49,999</div>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                            <button class="primary-btn" style="width: 100%; margin-top: 15px;" onclick="bookNow('Lunar Colony Artemis')">Book Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('img/mars-base.jpg')"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">Mars Base One</h3>
+                            <p class="card-text">Be among the first tourists to set foot on the Red Planet. Experience Martian gravity and breathtaking desert landscapes.</p>
+                            <div class="card-meta">
+                                <div class="price">$99,999</div>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.7</span>
+                                </div>
+                            </div>
+                            <button class="primary-btn" style="width: 100%; margin-top: 15px;" onclick="bookNow('Mars Base One')">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="packages" id="packages-section">
+                <div class="section-title">
+                    <h2>Travel Packages</h2>
+                    <p>Choose from our carefully curated space travel packages designed to provide unforgettable experiences with maximum comfort and safety.</p>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-details">
+                        <h3 class="package-title">
+                            <i class="fas fa-star"></i>
+                            VIP Zero-Gravity Experience
+                        </h3>
+                        <div class="package-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>7 Days</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-user-astronaut"></i>
+                                <span>Max 4 Travelers</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-shuttle-space"></i>
+                                <span>Round Trip</span>
+                            </div>
+                        </div>
+                        <p class="package-description">
+                            Experience the ultimate luxury in space travel. This VIP package includes priority boarding, private quarters on the Orbital Hotel Alpha, exclusive spacewalk with personal guide, and gourmet meals prepared by our chef.
+                        </p>
+                        <div class="features">
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Private Cabin</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Guided Spacewalk</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Zero-G Massage</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Earth Observation Deck</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Gourmet Dining</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="package-price">
+                        <div class="price-amount">$79,999</div>
+                        <div class="price-period">per person</div>
+                        <button class="primary-btn" onclick="bookPackage('VIP Zero-Gravity Experience')">Book Package</button>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-details">
+                        <h3 class="package-title">
+                            <i class="fas fa-moon"></i>
+                            Lunar Explorer
+                        </h3>
+                        <div class="package-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>10 Days</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-user-astronaut"></i>
+                                <span>Max 6 Travelers</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-shuttle-space"></i>
+                                <span>Round Trip</span>
+                            </div>
+                        </div>
+                        <p class="package-description">
+                            Journey to the Lunar Colony Artemis and experience the wonders of Earth's nearest neighbor. Walk on the lunar surface, visit the historic Apollo landing sites, and stay in comfortable lunar habitats.
+                        </p>
+                        <div class="features">
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Lunar Habitat Stay</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Moonwalk Experience</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Lunar Rover Expedition</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Apollo Sites Tour</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Earth-Rise Viewing</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="package-price">
+                        <div class="price-amount">$129,999</div>
+                        <div class="price-period">per person</div>
+                        <button class="primary-btn" onclick="bookPackage('Lunar Explorer')">Book Package</button>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="testimonials">
+                <div class="section-title">
+                    <h2>What Our Travelers Say</h2>
+                    <p>Read the experiences of our space travelers who have embarked on these extraordinary journeys.</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        The Zero-Gravity experience was absolutely mind-blowing! Floating freely while watching Earth below me was a perspective-shifting moment I'll never forget. The staff was incredibly professional and made sure we were safe at all times.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-image: url('img/traveler-1.jpg')"></div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>VIP Zero-Gravity Experience, August 2024</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        Walking on the lunar surface was surreal. The weight of my body at 1/6th of Earth's gravity, the stark beauty of the Moon, and seeing Earth hanging in the black sky—it was emotionally overwhelming in the best possible way.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-image: url('img/traveler-2.jpg')"></div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Lunar Explorer, October 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <div class="container">
+                <div class="footer-container">
+                    <div>
+                        <div class="footer-logo">
+                            <i class="fas fa-rocket"></i>
+                            <span>DubaiSpace</span>
+                        </div>
+                        <p class="footer-text">
+                            The future of space travel begins in Dubai. We provide luxury space travel experiences with uncompromising safety and comfort.
+                        </p>
+                        <div class="footer-social">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="footer-title">Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="showPage('home-page')">Home</a></li>
+                            <li><a href="#" onclick="showPage('destinations-section')">Destinations</a></li>
+                            <li><a href="#" onclick="showPage('packages-section')">Packages</a></li>
+                            <li><a href="#" onclick="showPage('accommodation-section')">Accommodation</a></li>
+                            <li><a href="#" onclick="showPage('about-section')">About Us</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="footer-title">Support</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Safety Protocols</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="footer-title">Contact</h3>
+                        <ul class="footer-links">
+                            <li><i class="fas fa-map-marker-alt"></i> Dubai Spaceport, UAE</li>
+                            <li><i class="fas fa-phone"></i> +971 4 123 4567</li>
+                            <li><i class="fas fa-envelope"></i> info@dubaispace.com</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 DubaiSpace. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+        
+        <div class="floating-book" onclick="showModal('booking-modal')">
+            <i class="fas fa-rocket"></i>
+        </div>
+    </div>
+    
+    <!-- User Dashboard -->
+    <div id="dashboard-page" style="display: none;">
+        <div class="dashboard">
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        <i class="fas fa-rocket"></i>
+                        <span>DubaiSpace</span>
+                    </div>
+                </div>
+                
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <h3 class="user-name">Alex Johnson</h3>
+                    <p class="user-status">Space Explorer</p>
+                </div>
+                
+                <ul class="sidebar-nav">
+                    <li>
+                        <a href="#" class="active">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>My Bookings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-heart"></i>
+                            <span>Saved Trips</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-cog"></i>
+                            <span>Account Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-life-ring"></i>
+                            <span>Help & Support</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showPage('home-page')">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Back to Home</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="main-content">
+                <div class="dashboard-header">
+                    <div class="welcome-msg">
+                        <h2>Welcome back, Alex!</h2>
+                        <p>Your next space adventure awaits.</p>
+                    </div>
+                    
+                    <div class="header-actions">
+                        <button class="outline-btn">
+                            <i class="fas fa-bell"></i>
+                            <span>Notifications</span>
+                        </button>
+                        <button class="primary-btn" onclick="showModal('booking-modal')">
+                            <i class="fas fa-plus"></i>
+                            <span>New Booking</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Trips Completed</span>
+                            <div class="stat-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">2</div>
+                        <p class="stat-description">Space journeys completed</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Upcoming Trips</span>
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">1</div>
+                        <p class="stat-description">Trip scheduled</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Space Miles</span>
+                            <div class="stat-icon">
+                                <i class="fas fa-route"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">342,810</div>
+                        <p class="stat-description">Miles traveled in space</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Reward Points</span>
+                            <div class="stat-icon">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value">12,500</div>
+                        <p class="stat-description">Available for redemption</p>
+                    </div>
+                </div>
+                
+                <div class="upcoming-trips">
+                    <div class="section-header">
+                        <h3 class="section-title">Upcoming Trip</h3>
+                        <button class="outline-btn">View All</button>
+                    </div>
+                    
+                    <div class="trip-cards">
+                        <div class="trip-card">
+                            <div class="trip-image" style="background-image: url('img/lunar-trip.jpg')"></div>
+                            <div class="trip-content">
+                                <h3 class="trip-destination">Lunar Colony Artemis</h3>
+                                <div class="trip-date">
+                                    <span><i class="fas fa-rocket"></i> Departure: April 15, 2025</span>
+                                    <span><i class="fas fa-rocket fa-flip-horizontal"></i> Return: April 25, 2025</span>
+                                </div>
+                                <p><i class="fas fa-ticket-alt"></i> Booking ID: LUN-23854</p>
+                                <p><i class="fas fa-user-astronaut"></i> Package: Lunar Explorer</p>
+                                
+                                <div class="countdown">
+                                    <p class="countdown-title">Time Until Launch</p>
+                                    <div class="countdown-timer">
+                                        <div class="time-block">
+                                            <span class="time-value" id="days">24</span>
+                                            <span class="time-label">Days</span>
+                                        </div>
+                                        <div class="time-block">
+                                            <span class="time-value" id="hours">12</span>
+                                            <span class="time-label">Hours</span>
+                                        </div>
+                                        <div class="time-block">
+                                            <span class="time-value" id="minutes">36</span>
+                                            <span class="time-label">Mins</span>
+                                        </div>
+                                        <div class="time-block">
+                                            <span class="time-value" id="seconds">45</span>
+                                            <span class="time-label">Secs</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ai-tips">
+                    <div class="section-header">
+                        <h3 class="section-title">AI Travel Assistant Tips</h3>
+                    </div>
+                    
+                    <div class="tips-container">
+                        <div class="tip-card">
+                            <div class="tip-header">
+                                <div class="tip-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h4 class="tip-title">Preparing for Low Gravity</h4>
+                            </div>
+                            <p class="tip-content">
+                                For your upcoming Lunar trip, consider doing resistance training before departure. This helps your body adjust to the 1/6th gravity on the Moon and prevents muscle atrophy during your stay.
+                            </p>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <div class="tip-header">
+                                <div class="tip-icon">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                                <h4 class="tip-title">Photography Tips</h4>
+                            </div>
+                            <p class="tip-content">
+                                The stark contrast between light and shadow on the lunar surface requires special camera settings. Pack a polarizing filter and adjust your exposure settings to capture the true beauty of the Moon.
+                            </p>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <div class="tip-header">
+                                <div class="tip-icon">
+                                    <i class="fas fa-suitcase"></i>
+                                </div>
+                                <h4 class="tip-title">Packing Essentials</h4>
+                            </div>
+                            <p class="tip-content">
+                                Remember that all essential space gear will be provided, but bring personal items like lip balm and lotion as the regulated environment can cause dryness. Personal mementos (under 100g) are also permitted.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modals -->
+    <div class="modal" id="booking-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Book Your Space Journey</h3>
+                <button class="close-modal" onclick="hideModal('booking-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="search-form">
+                    <div class="form-group">
+                        <label>Departing From</label>
+                        <select>
+                            <option>Dubai Spaceport</option>
+                            <option>Abu Dhabi Lunar Gateway</option>
+                            <option>Sharjah Orbital Terminal</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Destination</label>
+                        <select>
+                            <option>Orbital Hotel Alpha</option>
+                            <option>Lunar Colony Artemis</option>
+                            <option>Mars Base One</option>
+                            <option>Europa Research Station</option>
+                            <option>Saturn Rings Observatory</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Departure Date</label>
+                        <input type="date" min="2025-03-23">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Return Date</label>
+                        <input type="date" min="2025-03-23">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Travelers</label>
+                        <select>
+                            <option>1 Traveler</option>
+                            <option>2 Travelers</option>
+                            <option>3 Travelers</option>
+                            <option>4 Travelers</option>
+                            <option>5+ Travelers</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Class</label>
+                        <select>
+                            <option>Economy Pod</option>
+                            <option>Business Suite</option>
+                            <option>First Class Cabin</option>
+                            <option>VIP Zero-G Experience</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="outline-btn" onclick="hideModal('booking-modal')">Cancel</button>
+                <button class="primary-btn" onclick="processBooking()">Book Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Login</h3>
+                <button class="close-modal" onclick="hideModal('login-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="Enter your password">
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="checkbox">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" style="color: var(--secondary-color); text-decoration: none; font-size: 0.9rem;">Forgot password?</a>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="outline-btn" onclick="hideModal('login-modal')">Cancel</button>
+                <button class="primary-btn" onclick="login()">Login</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="booking-success-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Booking Confirmed!</h3>
+                <button class="close-modal" onclick="hideModal('booking-success-modal')">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--success-color); margin-bottom: 20px;"></i>
+                <h3>Your space journey has been booked successfully!</h3>
+                <p style="margin-top: 10px;">Booking Reference: <strong id="booking-reference">SPX-12345</strong></p>
+                <p style="margin-top: 10px;">A confirmation email has been sent to your registered email address. You can view your booking details in your dashboard.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="primary-btn" onclick="viewBooking()">View Booking</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="accommodation-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Recommended Accommodations</h3>
+                <button class="close-modal" onclick="hideModal('accommodation-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="cards-container">
+                    <div class="card" style="margin-bottom: 20px;">
+                        <div class="card-img" style="background-image: url('img/lunar-dome.jpg')"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">Lunar Dome Suite</h3>
+                            <p class="card-text">Luxury accommodation with panoramic views of the lunar landscape and Earth. Features private bathroom, climate control, and communications.</p>
+                            <div class="card-meta">
+                                <div class="price">$15,999 / night</div>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                            <button class="primary-btn" style="width: 100%; margin-top: 15px;" onclick="selectAccommodation('Lunar Dome Suite')">Select</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="margin-bottom: 20px;">
+                        <div class="card-img" style="background-image: url('img/zero-g-pod.jpg')"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">Zero-G Sleeping Pod</h3>
+                            <p class="card-text">Experience weightless sleep in our specially designed pods. Includes personal storage, entertainment system, and privacy screen.</p>
+                            <div class="card-meta">
+                                <div class="price">$8,999 / night</div>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.7</span>
+                                </div>
+                            </div>
+                            <button class="primary-btn" style="width: 100%; margin-top: 15px;" onclick="selectAccommodation('Zero-G Sleeping Pod')">Select</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>
